@@ -1,15 +1,38 @@
-import { Component, Input } from '@angular/core';
+import { Component, effect, Input, signal } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
-import { DUMMY_USERS } from '../dummy-users';
+import { TasksComponent } from './tasks/tasks.component';
+import { DUMMY_USERS } from './dummy-users';
+// import { DUMMY_USERS } from '../dummy-users';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeaderComponent, UserComponent],
+  imports: [HeaderComponent, UserComponent, TasksComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
   users = DUMMY_USERS;
+  count = signal(0);
+  SelectedUserId = 'u1';
+
+  get selectedUser() {
+    return this.users.find((user) => user.id === this.SelectedUserId)!;
+  }
+
+  constructor() {
+    // Log changes to the count signal
+    effect(() => {
+      console.log('Count updated:', this.count());
+    });
+  }
+  onSelectUser(id: string) {
+    console.log('Selected user with id ' + id);
+    this.SelectedUserId = id;
+  }
+
+  increment() {
+    this.count.update((value) => value + 1); // Update the signal
+  }
 }
