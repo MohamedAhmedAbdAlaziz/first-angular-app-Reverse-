@@ -4,11 +4,11 @@ import { UserComponent } from './user/user.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { DUMMY_USERS } from './dummy-users';
 // import { DUMMY_USERS } from '../dummy-users';
-
+import { NgFor } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeaderComponent, UserComponent, TasksComponent],
+  imports: [HeaderComponent, UserComponent, TasksComponent, NgFor],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
