@@ -12,8 +12,8 @@ import { map, filter } from 'rxjs/operators';
 import { AsyncPipe } from '@angular/common';
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [HeaderComponent, UserComponent, TasksComponent, AsyncPipe],
+  standalone: false,
+  //imports: [HeaderComponent, UserComponent, TasksComponent, AsyncPipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

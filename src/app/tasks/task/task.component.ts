@@ -18,7 +18,8 @@ interface Task {
 }
 @Component({
   selector: 'app-task',
-  imports: [CardComponent, DatePipe],
+  standalone: false,
+
   templateUrl: './task.component.html',
   styleUrl: './task.component.css',
 })
